@@ -55,7 +55,7 @@ dbt run
 
 ## Loom Video
 
-[Loom Video Link](https://www.loom.com/share/yourloomvideo)
+[Loom Video Link](https://www.loom.com/share/b23237b74ccb492c91d205177a2ae325?sid=98f8c754-9c68-4f49-b54f-11fabd503bc7)
 
 ---
 
