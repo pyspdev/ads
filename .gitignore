@@ -1,0 +1,6 @@
+duckdb.exe
+warehouse.duckdb
+*.db
+*.exe
+*.pyc
+__pycache__/

@@ -1,0 +1,114 @@
+{
+  "name": "My Challenge workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 17
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -304,
+        -64
+      ],
+      "id": "22961aed-fd9a-4e90-899a-fcbedd793376",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/uc?export=download&id=1RXj_3txgmyX2Wyt9ZwM7l4axfi5A6EC-",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        -64
+      ],
+      "id": "2e359cd7-bdde-4121-8608-18cefd045861",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:\\Users\\Hp\\DuckDB\\ads_spend.csv",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        112,
+        -64
+      ],
+      "id": "611150b5-430c-4a71-b43e-0d2390ae90a3",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "# the script is called ingest_ads_spend.py and is in the same directory\npython C:\\Users\\Hp\\DuckDB\\ingest_ads_spend.py "
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -64
+      ],
+      "id": "cec06a5c-050a-4d77-bdb2-0da0f582c77e",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8ae3f1b1-c8ab-4556-8bee-1e9a7927f8bb",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0a7bdc719d6e61dd2f7f68c78a5a82dade3b9a2af469e69328e455874eb09708"
+  },
+  "id": "mfGfpQ0qhYjcQSZ2",
+  "tags": []
+}
